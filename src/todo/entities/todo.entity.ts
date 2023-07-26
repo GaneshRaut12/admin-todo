@@ -1,16 +1,21 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { User } from 'src/user/entities/user.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Todo {
-    @PrimaryGeneratedColumn()
-    id:string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    title:string;
+  @Column()
+  title: string;
 
-    @Column()
-    isCompleted :boolean;
+  @Column()
+  isCompleted: boolean;
 
-    @Column()
-    date : string;
+  @Column()
+  date: string;
+  //HERE
+  //Multiple todo can belog to one user
+  @ManyToOne(() => User, (user) => user.todo)
+  user: User;
 }

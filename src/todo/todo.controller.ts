@@ -1,40 +1,47 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Patch,
+} from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
-import { UpdateTodoDto } from './dto/update-todo.dto';
 
 @Controller('todo')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
-  // @Post()
-  // create(@Body() createTodoDto: CreateTodoDto) {
-  //   return this.todoService.create(createTodoDto);
-  // }
-
-  @Post()
-  create(@Body() createTodoDto: CreateTodoDto) {
-    return this.todoService.create(createTodoDto);
+  @Post(':userId')
+  createTodo(
+    @Body() createTodoDto: CreateTodoDto,
+    @Param('userId') userId: number,
+  ) {
+    console.log('id', userId);
+    return this.todoService.create(createTodoDto, userId);
   }
 
-
-  @Get()
-  findAll() {
-    return this.todoService.findAll();
+  @Get('/todoByUserIdCompleted/:userID')
+  findTodoByUserIdComplete(@Param('userID') userID: number) {
+    return this.todoService.findTodoByUserIdComplete(userID);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.todoService.findOne(+id);
+  @Get('/todoByUserIdNotCompleted/:userID')
+  findTodoByUserIdNotComplete(@Param('userID') userID: number) {
+    console.log(typeof userID , userID);
+    return this.todoService.findTodByUserIdNotCompleted(Number(userID));
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-  //   return this.todoService.update(+id, updateTodoDto);
-  // }
+  @Patch(':todoID')
+  updateTodo(@Param('todoID') todoID: number) {
+    return this.todoService.makeTodoComplete(todoID);
+  }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.todoService.remove(+id);
+  @Delete(":todoID")
+  deleteTodoById(@Param("todoID") todoID : number){
+    return this.todoService.deleteTodoById(todoID)
+
   }
 }
