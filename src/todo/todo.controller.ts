@@ -6,6 +6,7 @@ import {
   Param,
   Delete,
   Patch,
+  Req,
 } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
@@ -18,8 +19,9 @@ export class TodoController {
   createTodo(
     @Body() createTodoDto: CreateTodoDto,
     @Param('userId') userId: number,
+    @Req() req: any
   ) {
-    console.log('id', userId);
+    console.log('id', req.user);
     return this.todoService.create(createTodoDto, userId);
   }
 
@@ -30,7 +32,7 @@ export class TodoController {
 
   @Get('/todoByUserIdNotCompleted/:userID')
   findTodoByUserIdNotComplete(@Param('userID') userID: number) {
-    console.log(typeof userID , userID);
+    console.log(typeof userID, userID);
     return this.todoService.findTodByUserIdNotCompleted(Number(userID));
   }
 
@@ -39,9 +41,8 @@ export class TodoController {
     return this.todoService.makeTodoComplete(todoID);
   }
 
-  @Delete(":todoID")
-  deleteTodoById(@Param("todoID") todoID : number){
-    return this.todoService.deleteTodoById(todoID)
-
+  @Delete(':todoID')
+  deleteTodoById(@Param('todoID') todoID: number) {
+    return this.todoService.deleteTodoById(todoID);
   }
 }

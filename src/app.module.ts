@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { TodoModule } from './todo/todo.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AuthModule } from './auth/auth.module';
 
 
 @Module({
@@ -22,11 +23,11 @@ import { MongooseModule } from '@nestjs/mongoose';
         logging: configService.get<boolean>('DATABASE_LOGGING'),
         database: configService.get('DATABASE_NAME'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
-
       }),
     }),
     UserModule,
     TodoModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],
