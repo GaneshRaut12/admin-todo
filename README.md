@@ -70,4 +70,92 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+# MyApp README.md
+
+## Description
+
+MyApp is a web application that allows users to manage their to-do lists. It provides two main modules: UserModule and TodoModule. The UserModule handles user-related functionalities such as user creation, retrieval, and deletion. On the other hand, the TodoModule is responsible for managing tasks or to-do items associated with each user.
+
+## Features
+
+1. **UserModule**
+   - Create User: Users can be created using this functionality.
+   - Get All Users: Retrieve a list of all users that have been created.
+   - Delete User: Remove a user from the system.
+
+2. **TodoModule**
+   - Add Todo: Users can add tasks to their to-do lists.
+   - Delete Todo: Remove a specific task from a user's to-do list.
+   - Get Completed Todos: Retrieve a list of to-do items that have been marked as completed for a specific user.
+   - Get Pending Todos: Retrieve a list of to-do items that are yet to be completed for a specific user.
+   - Update Todo Status: Users can update the status of a task from "not complete" to "complete."
+
+## AppModule - Main Module
+
+The AppModule serves as the main entry point of the application and handles the following tasks:
+
+1. **Database Connection:** Establishes a connection to the application's database to store user information and to-do items.
+
+2. **Module Imports:** Imports and integrates the UserModule and TodoModule functionalities into the main application.
+
+## Getting Started
+
+To run the MyApp application, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/your-username/myapp.git`
+2. Navigate to the project directory: `cd myapp`
+3. Install the required dependencies: `npm install`
+4. Set up the database connection by configuring the connection parameters.
+5. Run the application: `npm start`
+
+## Usage
+
+1. User Creation:
+   - To create a new user, call the appropriate API endpoint and provide the necessary user details such as name, email, etc.
+
+2. Get All Users:
+   - Use the designated API endpoint to fetch a list of all users that have been created in the system.
+
+3. Delete User:
+   - To delete a user, make a request to the specified API endpoint with the user ID to be deleted.
+
+4. Add Todo:
+   - Users can add new tasks to their to-do lists by using the provided API endpoint.
+
+5. Delete Todo:
+   - To remove a specific task from a user's to-do list, call the respective API endpoint with the todo ID to be deleted.
+
+6. Get Completed Todos:
+   - Retrieve a list of to-do items that have been marked as completed for a specific user.
+
+7. Get Pending Todos:
+   - Obtain a list of to-do items that are yet to be completed for a specific user.
+
+8. Update Todo Status:
+   - To mark a task as "complete," call the API endpoint and provide the todo ID with the updated status.
+
+## Technologies Used
+
+- Node.js
+- Express.js
+- MongoDB (or any other database used for storage)
+
+## Contribution Guidelines
+
+Contributions to MyApp are welcome! If you wish to contribute, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature: `git checkout -b feature-name`
+3. Make changes and commit them: `git commit -m "Add feature-name"`
+4. Push the changes to your fork: `git push origin feature-name`
+5. Create a pull request to the main repository.
+
+Please ensure that your code follows the existing coding standards and includes appropriate tests for any new features.
+
+## License
+
+MyApp is released under the [MIT License](LICENSE). Feel free to use, modify, and distribute this code as per the terms of the license.
+
+## Contact
+
+For any questions or inquiries, please contact us at contact@myapp.com.
