@@ -19,9 +19,8 @@ export class TodoController {
   createTodo(
     @Body() createTodoDto: CreateTodoDto,
     @Param('userId') userId: number,
-    @Req() req: any
+    @Req() req: any,
   ) {
-    console.log('id', req.user);
     return this.todoService.create(createTodoDto, userId);
   }
 

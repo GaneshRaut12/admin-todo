@@ -36,7 +36,6 @@ export class TodoService {
 
   findTodByUserIdNotCompleted(userId: number) {
     console.log(typeof userId , userId);
-    
     return this.addTodoRepository.find({
       relations: ['user'],
       where: { user: { id : userId }, isCompleted: false },
