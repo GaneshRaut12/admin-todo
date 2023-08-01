@@ -15,6 +15,10 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(email: string, password: string): Promise<User> {
+    /**
+     * This is the local strategy which is using for authetication
+     * with username and password i can login
+     */
     const user: User = await this.userService.findUserByEmail(email);
     if (user && user.password == password) return user;
     if (user == undefined)
